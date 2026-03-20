@@ -230,7 +230,7 @@ public class MovieController {
         return "admin-orders";
     }
     @GetMapping("/admin/movies/edit/{id}")
-public String showEditForm(@PathVariable int id, Model model) {
+    public String showEditForm(@PathVariable int id, Model model) {
     AdminMovie target = movieDatabase.stream()
             .filter(m -> m.getId() == id)
             .findFirst()
@@ -245,8 +245,8 @@ public String showEditForm(@PathVariable int id, Model model) {
 }
 
 
-@PostMapping("/admin/movies/update")
-public String updateMovie(@RequestParam int id, @RequestParam String title, 
+    @PostMapping("/admin/movies/update")
+    public String updateMovie(@RequestParam int id, @RequestParam String title, 
                           @RequestParam String genre, @RequestParam String runtime,
                           @RequestParam double price, @RequestParam String status) {
     
