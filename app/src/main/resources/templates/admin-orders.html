@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CineTick Admin - Order Management</title>
+    <link rel="stylesheet" href="/admin-movie.css">
+</head>
+<body class="admin-body">
+    <div class="admin-layout">
+        <div class="sidebar">
+    <div class="sidebar-logo">CineTick</div>
+    <ul>
+        <li><a href="/admin/movies">Movies</a></li>
+        <li class="active"><a href="/admin/orders">Orders</a></li>
+        <li class="logout-item"><a href="/logout">Logout</a></li>
+    </ul>
+</div>
+        
+        <div class="main">
+            <div class="content">
+                <div class="top-bar">
+                    <h1>Order History</h1>
+                    <p>Total Transactions: <span th:text="${orders.size()}">0</span></p>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Movie Title</th>
+                                <th>Seats</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <th:block th:if="${orders != null and !orders.isEmpty()}">
+                                <th:block th:each="order : ${orders}">
+                                    <tr>
+                                        <td th:text="${order.title}" class="bold">Movie Title</td>
+                                        <td th:text="${order.seats}">A1, A2</td>
+                                        <td th:text="${order.date}">Mar 16, 2026</td>
+                                        <td th:text="${order.hours}">1:00 PM</td>
+                                        <td><span class="status-badge active-status">Paid</span></td>
+                                    </tr>
+                                </th:block>
+                            </th:block>
+                        </tbody>
+                    </table>
+                </div>
+
+                <th:block th:if="${orders == null or orders.isEmpty()}">
+                    <div style="text-align: center; padding: 100px; color: #888;">
+                        <p>No transactions have been made yet.</p>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,386 @@
+/* =========================================
+   1. GLOBAL RESET & BASE
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body, html {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   2. STANDARDIZED NAVIGATION
+   ========================================= */
+/* =========================================
+   2. STANDARDIZED NAVIGATION
+   ========================================= */
+nav {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;       /* Removed vertical padding to rely on height */
+    height: 80px;          /* Locked height ensures no vertical jumping */
+    position: relative; 
+    z-index: 100;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't add to the 80px */
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+    height: 100%;          /* Matches nav height */
+}
+
+/* UNIFIED NAV TEXT STYLE */
+.nav-links a,
+.nav-links .admin-link,
+.nav-links .logout-link {
+    text-decoration: none;
+    
+    /* Lock Typography: These will never change */
+    font-size: 0.95rem !important; 
+    font-weight: 600 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    
+    line-height: 80px;     /* Matches nav height for perfect vertical centering */
+    display: inline-block;
+    transition: color 0.2s ease;
+    white-space: nowrap;   /* Prevents text wrapping which would break height */
+}
+
+/* --- THEME COLORS ONLY (No layout changes here) --- */
+
+/* Default / Dark Theme (Movies, Seats, Hero) */
+.nav-links a,
+.nav-links .admin-link,
+.nav-links .logout-link {
+    color: white;
+}
+
+/* Light Theme Pages (Checkout, Booking, About) */
+.checkout-body nav,
+.booking-body nav,
+.about-body nav {
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Optional: defines nav on white bg */
+}
+
+.checkout-body .nav-links a,
+.booking-body .nav-links a,
+.about-body .nav-links a {
+    color: black !important;
+}
+
+/* Hover States */
+.nav-links a:hover {
+    color: #D19DFF !important;
+}
+
+.checkout-body .nav-links a:hover,
+.booking-body .nav-links a:hover,
+.about-body .nav-links a:hover {
+    color: #4a148c !important;
+}
+
+/* =========================================
+   3. HERO / LANDING PAGE
+   ========================================= */
+.hero-container {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background: linear-gradient(135deg, #4b367c 0%, #9b7bc9 100%);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.hero-container::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    right: -15%;
+    width: 60%;
+    height: 120%;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hero {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 110px; 
+    flex-grow: 1; 
+    position: relative; 
+    z-index: 3;
+    margin-top: -100px; 
+}
+
+.content {
+    width: 45%;
+    color: white;
+}
+
+h1 {
+    font-size: 100px;
+    font-weight: 800;
+}
+
+.buy-btn {
+    background: white;
+    color: #4b367c;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.image-section {
+    width: 70%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================================
+   4. MOVIES GALLERY PAGE
+   ========================================= */
+.movies-body {
+    background: linear-gradient(180deg, #1a1a1a 0%, #4b367c 100%);
+    color: white;
+}
+
+.movies-container {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.poster-placeholder {
+    position: relative; 
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    height: 380px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.movie-card:hover .poster-placeholder {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(209, 157, 255, 0.2);
+    border-color: #D19DFF;
+}
+
+.price-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #D19DFF;
+    color: #1a1a1a;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    z-index: 5;
+}
+
+
+/* =========================================
+   5. BOOKING / SELECTION PAGE
+   ========================================= */
+.booking-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    padding: 20px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.pill-btn,
+.time-btn,
+.date-card {
+    border: 1px solid #000;
+    background: #fff;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.active {
+    background-color: #D19DFF !important;
+}
+
+.movie-poster-large {
+    width: 280px;
+    height: 400px;
+    background-color: #D19DFF;
+    border-radius: 4px;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   6. SEAT SELECTION
+   ========================================= */
+/* =========================================
+   6. SEAT SELECTION (FIXED)
+   ========================================= */
+.seats-body {
+    background: radial-gradient(circle at top right, #3d1263, #121212 70%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything horizontally */
+    padding-bottom: 50px;
+}
+
+/* Add a Screen Indicator at the top */
+.seats-body::after {
+    content: "SCREEN";
+    display: block;
+    width: 60%;
+    height: 5px;
+    background: #D19DFF;
+    margin: 40px 0;
+    box-shadow: 0 10px 30px rgba(209, 157, 255, 0.8);
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 10px;
+    padding-top: 15px;
+}
+
+.seat-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Balanced spacing between rows */
+    margin: 20px auto 60px;
+    padding: 20px;
+}
+
+.seat-row {
+    display: flex;
+    gap: 12px; /* Balanced spacing between seats */
+    justify-content: center;
+}
+
+.seat-box {
+    width: 55px; /* Slightly smaller for better fit */
+    height: 50px;
+    background-color: white;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.seat-box:hover {
+    transform: scale(1.1);
+    background-color: #f0f0f0;
+}
+
+/* Checked State - The Purple Highlight */
+.seat-checkbox:checked + .seat-box {
+    background-color: #d192ff !important;
+    color: white !important;
+    box-shadow: 0 0 15px rgba(209, 146, 255, 0.6);
+    transform: scale(1.05);
+}
+
+/* Legend or footer info */
+.seat-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* =========================================
+   7. CHECKOUT / SUCCESS / TICKETS
+   ========================================= */
+.checkout-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.payment-field {
+    width: 100%;
+    padding: 15px;
+    background-color: #f0f0f0; 
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.checkout-btn,
+.view-ticket-btn {
+    width: 100%;
+    background-color: #e1bfff;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ticket-card {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 30px;
+    width: 300px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+/* =========================================
+   8. HIDDEN ELEMENTS
+   ========================================= */
+.seat-checkbox,
+.hidden-radio {
+    display: none;
+}

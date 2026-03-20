@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CineTick - Booking</title>
+    <link rel="stylesheet" href="/booking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="booking-body">
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="/" class="bold">Home</a>
+            <a href="/movies" class="bold">Movies</a>
+            <a href="#" class="bold">About</a>
+            
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/mytickets" class="bold">MyTicket</a>
+            </th:block>
+        </div>
+        
+        <div class="logout-link">
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/logout" class="bold" style="color:inherit; text-decoration:none;">Logout</a>
+            </th:block>
+            <th:block th:if="${isUserLoggedIn == false}">
+                <a href="/user-login" class="bold" style="color:inherit; text-decoration:none;">Login</a>
+            </th:block>
+        </div>
+    </nav>
+
+    <form th:action="'/seats/' + ${movie.title}" method="GET">
+        <main class="booking-container">
+            <div class="selection-side">
+                <section>
+                    <h2>Theater</h2>
+                    <div class="options-row">
+                        <input type="radio" name="theater" id="qc" value="TIP Quezon City" checked class="hidden-radio">
+                        <label for="qc" class="pill-btn">TIP Quezon City</label>
+
+                        <input type="radio" name="theater" id="manila" value="TIP Manila" class="hidden-radio">
+                        <label for="manila" class="pill-btn">TIP Manila</label>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Select Date</h2>
+                    <div class="options-row">
+                        <th:block th:each="date, iterStat : ${realDates}">
+                            <div class="selection-item">
+                                <input type="radio" 
+                                       name="date" 
+                                       th:id="'date-' + ${iterStat.index}" 
+                                       th:value="${date['formattedDate']}" 
+                                       th:checked="${iterStat.first}" 
+                                       class="hidden-radio">
+                                
+                                <label th:for="'date-' + ${iterStat.index}" class="date-card">
+                                    <span th:text="${date['formattedDate']}">22 Oct</span><br>
+                                    <span class="day-text" th:text="${date['dayName']}">Mon</span>
+                                </label>
+                            </div>
+                        </th:block>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Time</h2>
+                    <div class="options-row">
+                        <th:block th:each="time, iterStat : ${timeSlots}">
+                            <div class="selection-wrapper">
+                                <input type="radio" name="time" 
+                                       th:id="'time-' + ${iterStat.index}" 
+                                       th:value="${time}" 
+                                       th:checked="${iterStat.index == 1}" 
+                                       class="hidden-radio">
+                                <label th:for="'time-' + ${iterStat.index}" class="time-btn">
+                                    <span th:text="${time}">10:00 AM</span>
+                                </label>
+                            </div>
+                        </th:block>
+                    </div>
+                </section>
+            </div>
+
+            <div class="summary-side">
+                <div class="movie-poster-large">
+                    <div class="price-pill" style="position: absolute; top: 20px; right: 20px; background: #D19DFF; color: black; padding: 5px 15px; border-radius: 20px; font-weight: bold;">
+                        ₱<span th:text="${movie.price}">0.00</span>
+                    </div>
+                </div>
+                
+                <div class="movie-info-text">
+                    <h1 th:text="${movie.title}">Movie Title</h1>
+                    <div class="meta-item"><span>Duration</span><b th:text="${movie.runtime}">0h 00m</b></div>
+                    <div class="meta-item"><span>Genre</span><b th:text="${movie.genre}">Genre</b></div>
+                    <div class="meta-item"><span>Price</span><b th:text="'₱' + ${movie.price}">₱0.00</b></div>
+                </div>
+
+                <div class="proceed-section">
+                    <p>*Seat selection can be done after this</p>
+                    <button type="submit" class="proceed-btn">Proceed</button>
+                </div>
+            </div>
+        </main>
+    </form>
+
+    <footer class="booking-footer">
+        <a href="/movies" class="back-link">&lt; Back</a>
+    </footer>
+</body>
+</html>

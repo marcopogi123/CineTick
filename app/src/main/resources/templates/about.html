@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineTick - About Us</title>
+    <link rel="stylesheet" href="/aboutus.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="checkout-body">
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="/" class="bold" style="text-decoration: none;">Home</a>
+            <a href="/movies" class="bold" style="text-decoration: none;">Movies</a>
+            <a href="/about" class="bold" style="text-decoration: none;">About</a>
+            
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/mytickets" class="bold">MyTicket</a>
+            </th:block>
+        </div>
+        <div class="logout-link">
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/logout" class="bold" style="color: inherit; text-decoration: none;">Logout</a>
+            </th:block>
+        </div>
+    </nav>
+
+    <header class="about-hero">
+        <h1>About <span>CineTick</span></h1>
+        <p>Where Movies Begins</p>
+    </header>
+
+    <main>
+        <section class="about-grid">
+            <div class="about-image-container">
+                <img src="/images/cinema-assets.png" alt="CineTick" style="width: 100%; height: 100%; object-fit: cover;">
+</div>
+            </div>
+            <div class="about-text">
+                <h2>Our Mission</h2>
+                <p>
+                    <strong>CineTick</strong> is more than just a ticketing website; it is a student-led initiative 
+                    designed specifically for the <strong>Technological Institute of the Philippines</strong>. 
+                    We aim to modernize how students access entertainment on campus.
+                </p>
+                <p>
+                    By merging creative design with <strong>Java Spring Boot</strong>, 
+                    we provide an organized platform that handles everything from seat selection to 
+                    real-time receipt generation.
+                </p>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2 style="margin-bottom: 20px;">The Development Team</h2>
+            <p style="color: #888; margin-bottom: 40px;">Meet the creative minds behind CineTick</p>
+            
+            <div class="team-container">
+                <div class="team-card">
+                    <div class="profile-circle"><img src="/images/chloe.png" alt="Chloe" style="width: 105%; object-fit: cover;"></div>
+                    <p class="member-name">Chloe Jen Sta. Maria</p>
+                    <p class="member-role">Leader</p>
+                    <p class="member-bio">dependi sa kanila</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="profile-circle" style="background: #E0C3FC;"></div>
+                    <p class="member-name">Frank Clarence Isabedra</p>
+                    <p class="member-role">Member</p>
+                    <p class="member-bio">dependi sa kanila</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="profile-circle" style="background: #B983FF;"></div>
+                    <p class="member-name">Hillary Mira</p>
+                    <p class="member-role">Member</p>
+                    <p class="member-bio">dependi sa kanila</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="profile-circle"><img src="/images/francine.jpg" alt="Francine" style="width: 100%; object-fit: cover;"></div>
+                    <p class="member-name">Hannah Francine Salcedo</p>
+                    <p class="member-role">Member</p>
+                    <p class="member-bio">dependi sa kanila</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="profile-circle"><img src="/images/marco.jpg" alt="Marco" style="width: 100%; object-fit: cover;"></div>
+                    <p class="member-name">Marco Timoty Salva</p>
+                    <p class="member-role">Member</p>
+                    <p class="member-bio">dependi sa kanila</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="profile-circle"><img src="/images/mhercel.jpg" alt="Mhercel" style="width: 100%; object-fit: cover;"></div>
+                    <p class="member-name">Mhercel Yasay</p>
+                    <p class="member-role">Member</p>
+                    <p class="member-bio">dependi sa kanila</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="about-footer">
+        <p>&copy; 2026 CineTick - Group 3 IT12S1</p>
+    </footer>
+</body>
+</html>

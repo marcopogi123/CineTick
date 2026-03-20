@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Movie - CineTick Admin</title>
+    <link rel="stylesheet" href="/admin-movie-create.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-create-body">
+
+    <div class="admin-layout">
+        <div class="sidebar">
+            <div class="sidebar-logo">CineTick</div>
+            <ul>
+                <li class="active"><a href="/admin/movies">Movies</a></li>
+                <li><a href="/admin/orders">Orders</a></li>
+                <li class="logout-item"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="content">
+                <div class="form-header">
+                    <h1>Add New Movie</h1>
+                    <p>Enter the details below to add a new movie to the system.</p>
+                </div>
+
+                <div class="form-card">
+                    <form action="/admin/movies/add" method="POST">
+                        <div class="form-group">
+                            <label for="title">Movie Title</label>
+                            <input type="text" id="title" name="title" placeholder="e.g., Spiderman: No Way Home" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genre">Genre</label>
+                            <input type="text" id="genre" name="genre" placeholder="e.g., Action, Adventure" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="runtime">Runtime</label>
+                            <input type="text" id="runtime" name="runtime" placeholder="e.g., 120 mins" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">Ticket Price (Php)</label>
+                            <input type="number" id="price" name="price" placeholder="150.00" step="0.01" min="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select id="status" name="status">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="/admin/movies" class="btn-cancel">Cancel</a>
+                            <button type="submit" class="btn-save">Save Movie</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

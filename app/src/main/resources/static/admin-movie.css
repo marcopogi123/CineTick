@@ -1,0 +1,230 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: #f8f9fa; 
+    min-height: 100vh;
+}
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #1a1a1a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed; 
+    height: 100vh;
+}
+
+.sidebar-logo {
+    padding: 30px;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #D19DFF;
+    text-align: center;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 0;
+    transition: 0.2s;
+}
+
+.sidebar ul li a {
+    padding: 15px 30px;
+    color: #bbb;
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    font-size: 1rem;
+}
+
+.sidebar ul li.active {
+    background-color: #2a2a2a;
+    border-left: 4px solid #D19DFF;
+}
+
+.sidebar ul li.active a {
+    color: white;
+}
+
+.sidebar ul li:hover:not(.active) {
+    background-color: #252525;
+}
+
+.sidebar ul li.logout-item a {
+    color: #ff4d4d;
+    margin-top: 20px;
+}
+
+.sidebar ul li.logout-item:hover {
+    background-color: rgba(255, 77, 77, 0.1);
+}
+
+.main {
+    flex: 1;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    color: #333;
+}
+
+.user-icon {
+    width: 35px;
+    height: 35px;
+    background: #D19DFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 0.9rem;
+}
+
+.content {
+    padding: 40px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.top-bar h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.create-btn {
+    background-color: #D19DFF;
+    color: black;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.create-btn:hover {
+    background-color: #b57ae6;
+    transform: translateY(-2px);
+}
+
+.table-container {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 2px solid #f0f0f0;
+    color: #999;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 18px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #444;
+    vertical-align: middle;
+}
+
+.bold {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.active-status {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.inactive-status {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+}
+
+.actions button, .actions a {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: #666;
+    transition: 0.2s;
+}
+
+.actions .delete-action:hover {
+    color: #ff4d4d;
+}
+
+.actions .edit-action:hover {
+    color: #D19DFF;
+}
+
+.actions .view-action:hover {
+    color: #2196F3;
+}
+
+.sidebar ul li.active {
+    background: rgba(209, 157, 255, 0.1); 
+    border-right: 4px solid #D19DFF; 
+}
+
+.sidebar ul li.active a {
+    color: #D19DFF;
+    font-weight: 800;
+}

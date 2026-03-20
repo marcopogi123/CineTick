@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CineTick - Success</title>
+    <link rel="stylesheet" href="/success.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="checkout-body"> 
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="/" class="bold">Home</a>
+            <a href="/movies" class="bold">Movies</a>
+            <a href="#" class="bold">About</a>
+            
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/mytickets" class="bold">MyTicket</a>
+            </th:block>
+        </div>
+        
+        <div class="logout-link">
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/logout" class="bold">Logout</a>
+            </th:block>
+            <th:block th:if="${isUserLoggedIn == false}">
+                <a href="/user-login" class="bold">Login</a>
+            </th:block>
+        </div>
+    </nav>
+
+    <main class="success-container">
+        <div class="success-content">
+            <div class="checkmark-circle">
+                <span class="checkmark">✓</span>
+            </div>
+            
+            <h1 th:text="'Payment Success for ' + ${title} + '!'">Payment Success!</h1>
+            
+            <p>Your booking has been confirmed. Enjoy your movie at CineTick!</p>
+
+            <div class="success-actions" style="display: flex; flex-direction: column; gap: 15px; margin-top: 30px;">
+    
+    <a href="/mytickets" 
+   style="text-decoration: none; display: block; width: 40%; background: #D19DFF; color: black; padding: 15px 0; border-radius: 12px; font-weight: 800; text-align: center;">
+    View My Tickets
+</a>
+    
+    <a href="/" 
+       style="text-decoration: none; text-align: center; display: block; width: 40%; border: 2px solid #D19DFF; color: #D19DFF; padding: 13px 0; border-radius: 12px; font-weight: 800; font-size: 1rem;">
+        Back to Homepage
+    </a>
+    
+</div>
+        </div>
+    </main>
+</body>
+</html>

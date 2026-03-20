@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineTick - Where Movies Begins</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <div class="hero-container">
+        <nav>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/movies">Movies</a>
+                <a href="/about">About</a>
+                
+                <th:block th:if="${isUserLoggedIn == false}">
+                    <a href="/user-login">Login</a>
+                </th:block>
+                
+                <th:block th:if="${isUserLoggedIn == true}">
+                    <a href="/mytickets">MyTicket</a>
+                </th:block>
+            </div>
+
+            <th:block th:if="${isUserLoggedIn == false}">
+                <a href="/admin-login" class="admin-link" style="text-decoration: none;">Admin</a>
+            </th:block>
+            
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/logout" class="admin-link" style="text-decoration: none;">Logout</a>
+            </th:block>
+        </nav>
+
+        <main class="hero">
+            <div class="content">
+                <h1>CineTick</h1>
+                <p class="tagline">Where Movies Begins</p>
+                <p class="description">
+                    Your convenient online platform for booking movie tickets anytime, anywhere. 
+                    Browse the latest films, explore showtimes, and select your preferred seats.
+                </p>
+                <button class="buy-btn" onclick="location.href='/movies'">BUY NOW</button>
+            </div>
+            
+            <div class="image-section">
+                <img src="/images/cinema-assets.png" alt="Cinema Graphics">
+            </div>
+        </main>
+    </div>
+</body>
+</html>

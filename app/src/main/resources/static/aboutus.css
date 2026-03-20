@@ -1,0 +1,197 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+
+body.checkout-body {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+
+nav {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;     
+    height: 80px;          
+    position: relative; 
+    z-index: 100;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+    height: 100%;    
+}
+
+.nav-links a {
+    font-size: 0.95rem !important; 
+    font-weight: 600 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    
+    line-height: 80px;    
+    display: inline-block;
+    transition: color 0.2s ease;
+    white-space: nowrap;  
+}
+.nav-links a:hover {
+    color: #4a148c !important;
+}
+
+.logout-link {
+    color: black !important;
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.about-hero {
+    text-align: center;
+    padding: 100px 20px 60px; 
+    background: linear-gradient(180deg, #ffffff 0%, #f9f5ff 100%);
+}
+
+.about-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.about-hero span {
+    color: #D19DFF;
+}
+
+.about-hero p {
+    color: #888;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+    align-items: center;
+}
+
+.about-image-container {
+    background: #f8f9fa;
+    height: 350px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #eee;
+    overflow: hidden;
+}
+
+.about-image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.about-text h2 {
+    font-size: 2.2rem;
+    color: #4b367c;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* 5. Team Section */
+.team-section {
+    padding: 80px 20px;
+    background: #fdfbff;
+    text-align: center;
+}
+
+.team-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    background: white;
+    padding: 40px 25px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(209, 157, 255, 0.08);
+    border: 1px solid #f0e6ff;
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(209, 157, 255, 0.15);
+    border-color: #D19DFF;
+}
+
+.profile-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-name {
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+}
+
+.member-role {
+    color: #D19DFF;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.member-bio {
+    color: #777;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* 6. Footer */
+.about-footer {
+    padding: 50px;
+    text-align: center;
+    color: #bbb;
+    font-weight: 600;
+}

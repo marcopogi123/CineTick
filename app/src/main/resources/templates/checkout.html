@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CineTick - Booking Detail</title>
+    <link rel="stylesheet" href="/checkout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="checkout-body"> 
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="/" class="bold">Home</a>
+            <a href="/movies" class="bold">Movies</a>
+            <a href="#" class="bold">About</a>
+            
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/mytickets" class="bold">MyTicket</a>
+            </th:block>
+        </div>
+        <div class="logout-link">
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/logout" class="bold" style="color: inherit; text-decoration: none;">Logout</a>
+            </th:block>
+        </div>
+    </nav>
+
+    <main class="checkout-container">
+        <h1 class="checkout-title">Booking Detail</h1>
+
+        <section class="detail-section">
+            <form action="/process-payment" method="POST">
+                <input type="hidden" name="title" th:value="${title}">
+                <input type="hidden" name="totalPrice" th:value="${totalPrice}">
+                <input type="hidden" name="seats" th:value="${selectedSeats}">
+
+                <h3>Schedule</h3>
+                <div class="info-group">
+                    <label>Movie Title</label>
+                    <p class="highlight-text" th:text="${title}">Movie Title</p>
+                </div>
+                
+                <div class="info-group">
+                    <label>Date</label>
+                    <p class="highlight-text" th:text="${date}">Date</p>
+                </div>
+                
+                <div class="flex-row">
+                    <div class="info-group">
+                        <label>Tickets (<span th:text="${seatCount}">0</span>)</label>
+                        <p class="highlight-text" th:text="${selectedSeats}">Seats</p>
+                    </div>
+                    <div class="info-group">
+                        <label>Location</label>
+                        <p class="highlight-text">TIP Cinema</p>
+                    </div>
+                </div>
+
+                <hr class="divider">
+                
+                <h3>Transaction Detail</h3>
+                <div class="flex-row space-between">
+                    <span>Total Payment</span>
+                    <span class="price-text" th:text="'₱' + ${#numbers.formatDecimal(totalPrice, 1, 2)}">₱0.00</span>
+                </div>
+
+                <div class="payment-input-section">
+                    <label for="paymentAmount">Enter Payment Amount (₱)</label>
+                    <input type="number" name="paymentAmount" id="paymentAmount" 
+                           class="payment-field" placeholder="0.00" required step="0.01" min="0">
+                    
+                    <th:block th:if="${error != null}">
+                        <p class="error-msg" style="color: #ff4d4d; font-weight: 700; margin-top: 10px;" th:text="${error}"></p>
+                    </th:block>
+                </div>
+
+                <p class="notice">*Purchased tickets cannot be canceled or refunded.</p>
+                
+                <button type="submit" class="checkout-btn">Confirm & Pay</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer-light" style="padding: 20px 60px;">
+        <a th:href="'/seats/' + ${title}" class="back-link-dark">&lt; Back to Seat Selection</a>
+    </footer>
+</body>
+</html>

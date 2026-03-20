@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineTick - Now Showing</title>
+    <link rel="stylesheet" href="/movies.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="movies-body">
+    <nav>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/movies">Movies</a>
+            <a href="/about">About</a>
+            
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/mytickets">MyTicket</a>
+            </th:block>
+        </div>
+        
+        <div class="logout-link">
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/logout" style="color: inherit; text-decoration: none;">Logout</a>
+            </th:block>
+            <th:block th:if="${isUserLoggedIn == false}">
+                <a href="/user-login" style="color: inherit; text-decoration: none;">Login</a>
+            </th:block>
+        </div>
+    </nav>
+
+    <main class="movies-container">
+        <h1 class="page-title">Now Showing</h1>
+        
+        <div class="movies-grid">
+            <th:block th:each="movie : ${movies}">
+                <div class="movie-card">
+                    <a th:href="'/booking/' + ${movie.title}" style="text-decoration: none; color: inherit;">
+                        <div class="poster-placeholder"></div>
+                        
+                        <div class="movie-details">
+                            <p class="movie-label" th:text="${movie.title}">Movie Title</p>
+                            <span class="movie-genre" th:text="${movie.genre}">Genre</span>
+                            
+                            <div class="movie-runtime-info">
+                                <span class="runtime-icon">🕒</span>
+                                <span th:text="${movie.runtime}">Runtime</span>
+                            </div>
+
+                            <div class="price-container">
+                                <span class="price-value" th:text="'₱' + ${movie.price}">₱0.00</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </th:block>
+            </div>
+
+        <th:block th:if="${movies == null or movies.isEmpty()}">
+            <div class="empty-state">
+                <p>No movies are currently available. Check back later!</p>
+            </div>
+        </th:block>
+
+        <th:block th:if="${totalPages != null and totalPages > 1}">
+            <div class="pagination">
+                <th:block th:if="${currentPage > 0}">
+                    <a th:href="'/movies?page=' + (${currentPage} - 1)" class="page-btn">Previous</a>
+                </th:block>
+                
+                <span class="page-info" th:text="'Page ' + (${currentPage} + 1) + ' of ' + ${totalPages}"></span>
+
+                <th:block th:if="${currentPage < totalPages - 1}">
+                    <a th:href="'/movies?page=' + (${currentPage} + 1)" class="page-btn">Next</a>
+                </th:block>
+            </div>
+        </th:block>
+    </main>
+
+    <footer class="movies-footer">
+        <a href="/" class="back-btn">&lt; Back to Home</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,157 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body.checkout-body {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    min-height: 100vh;
+}
+
+
+nav.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    height: 80px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a, .logout-link a {
+    color: black;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+
+.tickets-container {
+    padding: 40px 60px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+
+.tickets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+
+.ticket-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ticket-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(209, 157, 255, 0.15);
+    border-color: #D19DFF;
+}
+
+
+.ticket-info label {
+    display: block;
+    color: #999;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.ticket-date {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.ticket-movie-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #4b367c; 
+    margin-bottom: 15px;
+}
+
+.ticket-val {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.ticket-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.download-btn {
+    width: 100%;
+    background: #D19DFF;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.download-btn:hover {
+    background: #c488ff;
+}
+
+.download-btn:active {
+    transform: scale(0.98);
+}
+
+/* 7. Empty State */
+.empty-tickets {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.empty-tickets p {
+    color: #888;
+    font-size: 1.2rem;
+}
+
+.browse-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #D19DFF;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+
+footer {
+    padding: 50px 100px;
+}
+
+.back-link-gray {
+    color: #888;
+    text-decoration: none;
+    font-weight: 700;
+}

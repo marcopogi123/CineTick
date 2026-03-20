@@ -1,0 +1,147 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.hero-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #4b367c 0%, #9b7bc9 100%); 
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-container::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    right: -20%;
+    width: 70%;
+    height: 120%;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+nav {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    height: 80px;
+    position: relative; 
+    z-index: 100;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a, .admin-link {
+    text-decoration: none !important;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.admin-link {
+    color: #1a1a1a; 
+}
+
+.nav-links a:hover {
+    opacity: 0.7;
+}
+
+.hero {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 100px; 
+    flex-grow: 1;
+    position: relative; 
+    z-index: 3;
+    margin-top: -50px;
+}
+
+.content {
+    width: 45%;
+    color: white;
+}
+
+h1 {
+    font-size: 110px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 35px;
+    max-width: 500px;
+}
+
+.buy-btn {
+    background: white;
+    color: #623fa2; 
+    border: none;
+    padding: 15px 45px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.buy-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.image-section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+    
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(-1deg);
+    }
+}

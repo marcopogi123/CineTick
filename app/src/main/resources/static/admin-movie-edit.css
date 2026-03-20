@@ -1,0 +1,113 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f7f6;
+    height: 100vh;
+}
+
+.admin-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.form-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 20px; 
+}
+
+.form-card h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.form-card p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    outline: none;
+    border-color: #D19DFF;
+    box-shadow: 0 0 0 4px rgba(209, 157, 255, 0.15);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn-save {
+    flex: 2;
+    background-color: #D19DFF;
+    color: #1a1a1a;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-save:hover {
+    background-color: #c080ff;
+}
+
+.btn-cancel {
+    flex: 1;
+    background-color: #f0f0f0;
+    color: #555;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #e5e5e5;
+}
+
+
+option[value="Active"] { color: #28a745; font-weight: bold; }
+option[value="Inactive"] { color: #dc3545; font-weight: bold; }

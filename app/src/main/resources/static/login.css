@@ -1,0 +1,133 @@
+.login-card-container {
+    max-width: 420px;
+    margin: 60px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.06);
+    border: 1px solid #f1f1f1;
+    font-family: 'Inter', sans-serif; 
+}
+
+.tab-header {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 35px;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-header label {
+    padding: 10px 5px;
+    cursor: pointer;
+    font-weight: 700; 
+    color: #999;
+    font-size: 1rem;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+
+.form-content { display: none; }
+.hidden-radio { display: none; } 
+
+#login-tab:checked ~ .tab-header label[for="login-tab"],
+#register-tab:checked ~ .tab-header label[for="register-tab"] {
+    color: #D19DFF; 
+    border-color: #D19DFF;
+}
+
+#login-tab:checked ~ .login-form,
+#register-tab:checked ~ .register-form {
+    display: block;
+    animation: slideUp 0.4s ease forwards;
+}
+
+
+.login-title {
+    font-size: 2.2rem; 
+    font-weight: 800; 
+    margin-bottom: 10px;
+    color: #1a1a1a;
+    letter-spacing: -1px;
+}
+
+.login-subtitle {
+    color: #888;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+
+.login-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.login-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800; 
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+
+.login-field {
+    width: 100%;
+    padding: 14px 18px;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box; 
+    transition: 0.3s;
+}
+
+.login-field:focus {
+    outline: none;
+    background: #fff;
+    border-color: #D19DFF;
+    box-shadow: 0 5px 15px rgba(209, 157, 255, 0.15);
+}
+
+
+.login-btn {
+    width: 100%;
+    background-color: #D19DFF;
+    color: #1a1a1a;
+    border: none;
+    padding: 18px;
+    border-radius: 15px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #c080ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(209, 157, 255, 0.3);
+}
+
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CineTick - My Tickets</title>
+    <link rel="stylesheet" href="/mytickets.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="checkout-body">
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="/" class="bold">Home</a>
+            <a href="/movies" class="bold">Movies</a>
+            <a href="/about" class="bold">About</a>
+            
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/mytickets" class="bold">MyTicket</a>
+            </th:block>
+        </div>
+        <div class="logout-link">
+            <th:block th:if="${isUserLoggedIn == true}">
+                <a href="/logout" class="bold" style="color: inherit; text-decoration: none;">Logout</a>
+            </th:block>
+        </div>
+    </nav>
+
+    <main class="tickets-container" style="padding: 40px 60px;">
+        <h1 class="page-title" style="text-align: left; font-size: 2.5rem; font-weight: 800;">My Tickets</h1>
+
+        <div class="tickets-grid" th:if="${tickets != null and !tickets.isEmpty()}" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 30px;">
+                
+                <div class="ticket-card" th:each="ticket : ${tickets}" style="background: white; border: 1px solid #eee; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                        
+                        <div class="ticket-info">
+                            <label style="color: #999; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Date</label>
+                            <p class="ticket-val" th:text="${ticket.date}" style="font-size: 1.1rem; font-weight: 700; margin: 5px 0 15px 0;">Date</p>
+                            
+                            <label style="color: #999; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Movie Title</label>
+                            <p class="ticket-val" th:text="${ticket.title}" style="font-size: 1.3rem; font-weight: 800; color: #D19DFF; margin: 5px 0 15px 0;">Title</p>
+                            
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <label style="color: #999; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Seats</label>
+                                    <p class="ticket-val" th:text="${ticket.seats}" style="font-weight: 700;">Seats</p>
+                                </div>
+                                <div>
+                                    <label style="color: #999; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Time</label>
+                                    <p class="ticket-val" th:text="${ticket.hours}" style="font-weight: 700;">Time</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="download-btn" 
+                                th:data-title="${ticket.title}"
+                                th:data-date="${ticket.date}"
+                                th:data-seats="${ticket.seats}"
+                                th:data-total="${ticket.total}"
+                                th:data-paid="${ticket.paid}"
+                                th:data-change="${ticket.change}"
+                                onclick="printReceipt(this.dataset.title, this.dataset.date, this.dataset.seats, this.dataset.total, this.dataset.paid, this.dataset.change)"
+                                style="width: 100%; background: #D19DFF; border: none; padding: 12px; border-radius: 12px; font-weight: 800; margin-top: 25px; cursor: pointer;">
+                            Save & View Receipt
+                        </button>
+                    </div>
+                
+            </div>
+
+        <th:block th:if="${tickets == null or tickets.isEmpty()}">
+            <div style="text-align: center; padding: 100px 0;">
+                <p style="color: #888; font-size: 1.2rem;">You haven't purchased any tickets yet.</p>
+                <a href="/movies" style="display: inline-block; margin-top: 20px; color: #D19DFF; font-weight: 700; text-decoration: none;">Browse Movies →</a>
+            </div>
+        </th:block>
+    </main>
+
+    <footer style="padding: 40px 60px;">
+        <a href="/movies" style="color: #888; text-decoration: none; font-weight: 700;">&lt; Back to Movies</a>
+    </footer>
+
+    <script>
+    function printReceipt(title, date, seats, total, paid, change) {
+        const receipt = `
+==========================================
+          CINETICK OFFICIAL RECEIPT
+==========================================
+MOVIE:    ${title}
+DATE:     ${date}
+SEATS:    ${seats}
+------------------------------------------
+TOTAL:    ₱${total}
+PAID:     ₱${paid}
+CHANGE:   ₱${change}
+------------------------------------------
+LOCATION: TIP Cinema
+STATUS:   PAID / CONFIRMED
+
+Thank you for choosing CineTick!
+==========================================`;
+
+        alert(receipt);
+    }
+    </script>
+</body>
+</html>
